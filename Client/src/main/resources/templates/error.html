@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{DashboardAdmin/Css :: css-content}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{User/headerIndex :: part-content}"></th:block>
+
+<main class="bg-transparent">
+    <!-- banner section -->
+    <section>
+        <!-- banner section -->
+        <div
+                class="bg-lightGrey10 dark:bg-lightGrey10-dark relative z-0 overflow-y-visible py-50px md:py-20 lg:py-100px 2xl:pb-150px 2xl:pt-40.5"
+        >
+            <!-- animated icons -->
+            <div>
+                <img
+                        class="absolute left-0 bottom-0 md:left-[14px] lg:left-[50px] lg:bottom-[21px] 2xl:left-[165px] 2xl:bottom-[60px] animate-move-var z-10"
+                        src="./assets/images/herobanner/herobanner__1.png"
+                        alt=""
+                ><img
+                    class="absolute left-0 top-0 lg:left-[50px] lg:top-[100px] animate-spin-slow"
+                    src="./assets/images/herobanner/herobanner__2.png"
+                    alt=""
+            ><img
+                    class="absolute right-[30px] top-0 md:right-10 lg:right-[575px] 2xl:top-20 animate-move-var2 opacity-50 hidden md:block"
+                    src="./assets/images/herobanner/herobanner__3.png"
+                    alt=""
+            >
+
+                <img
+                        class="absolute right-[30px] top-[212px] md:right-10 md:top-[157px] lg:right-[45px] lg:top-[100px] animate-move-hor"
+                        src="./assets/images/herobanner/herobanner__5.png"
+                        alt=""
+                >
+            </div>
+            <div class="container">
+                <div class="text-center">
+                    <h1
+                            class="text-3xl md:text-size-40 2xl:text-size-55 font-bold text-blackColor dark:text-blackColor-dark mb-7 md:mb-6 pt-3"
+                    >
+                        Error Page
+                    </h1>
+                    <ul class="flex gap-1 justify-center">
+                        <li>
+                            <a
+                                    href="index.html"
+                                    class="text-lg text-blackColor2 dark:text-blackColor2-dark"
+                            >Home <i class="icofont-simple-right"></i
+                            ></a>
+                        </li>
+                        <li>
+                  <span
+                          class="text-lg text-blackColor2 dark:text-blackColor2-dark"
+                  >Errro Page</span
+                  >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--blog details section -->
+    <section>
+        <div class="container py-100px">
+            <div class="w-full lg:max-w-770px lg:mx-auto text-center">
+                <img
+                        src="./assets/images/icon/error__1.png"
+                        alt=""
+                        class="w-full mb-60px"
+                >
+                <h3
+                        class="text-size-35 md:text-size-40 lg:text-size-50 leading-10 md:leading-14.5 lg:leading-20 text-blackColor dark:text-blackColor-dark font-bold"
+                >
+                    Oops... It looks like you ‘re lost !
+                </h3>
+                <p
+                        class="text-lg text-contentColor dark:text-contentColor-dark leading-22px"
+                >
+                    Oops! The page you are looking for does not exist. It might have
+                    been moved or deleted
+                </p>
+                <div class="mt-50px text-center">
+                    <a
+                            href="index.html"
+                            class="text-size-15 font-semibold text-whiteColor bg-primaryColor border border-primaryColor px-43px py-4 hover:text-primaryColor hover:bg-whiteColor rounded inline-block dark:hover:bg-whiteColor-dark dark:hover:text-whiteColor"
+                    >
+                        Back To Home <i class="icofont-simple-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<th:block th:replace="~{DashboardAdmin/footer :: footer}"></th:block>
+
+<th:block th:replace="~{DashboardAdmin/Css :: body}"></th:block>
+</body>
+</html>

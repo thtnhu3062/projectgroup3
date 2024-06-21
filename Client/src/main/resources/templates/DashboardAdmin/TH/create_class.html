@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <th:block th:replace="~{DashboardAdmin/Css :: css-content}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{DashboardAdmin/header :: part-content}"></th:block>
+<!-- dashboard content -->
+<div class="lg:col-start-4 lg:col-span-9">
+  <!-- setting area -->
+  <div
+          class="p-10px md:px-10 md:py-50px mb-30px bg-whiteColor dark:bg-whiteColor-dark shadow-accordion dark:shadow-accordion-dark rounded-5"
+  >
+    <!-- heading -->
+    <div
+            class="mb-6 pb-5 border-b-2 border-borderColor dark:border-borderColor-dark"
+    >
+      <h2
+              class="text-2xl font-bold text-blackColor dark:text-blackColor-dark"
+      >
+        Education Class
+      </h2>
+    </div>
+    <div class="">
+
+      <div class="tab-contents">
+        <div class=" transition-all duration-300">
+          <form  th:action="@{/saveclasss}" th:object="${classs}" method="post" class="text-sm text-blackColor dark:text-blackColor-dark leading-1.8"
+                  data-aos="fade-up">
+            <div
+                    class="grid grid-cols-1 mb-15px gap-y-15px gap-x-30px"
+            >
+              <div>
+                <label class="mb-3 block font-semibold"
+                >Class</label
+                >
+                <input  th:field="*{classsname}" type="text"
+                        placeholder="Current Class (Ex: Lop 1,Lop 2..)"
+                        class="w-full py-10px px-5 text-sm focus:outline-none text-contentColor dark:text-contentColor-dark bg-whiteColor dark:bg-whiteColor-dark border-2 border-borderColor dark:border-borderColor-dark placeholder:text-placeholder placeholder:opacity-80 leading-23px rounded-md font-no"
+                >
+              </div>
+
+              <div>
+                <label class="mb-3 block font-semibold"
+                >Level</label
+                >
+                <div>
+                  <label
+                          class="text-xs uppercase text-placeholder block font-semibold text-opacity-50 leading-1.8"
+                  >Name Level Education:</label
+                  >
+                  <div
+                          class="bg-whiteColor relative rounded-md"
+                  >
+                    <select th:field="*{levelid}"
+                            class="text-base bg-transparent text-blackColor2 w-full p-13px pr-30px focus:outline-none block appearance-none relative z-20 focus:shadow-select rounded-md"
+                    >
+                      <option th:value="All">--Seleceted--</option>
+                      <option th:each="e: ${levels}" th:value="${e.levelid}"
+                         th:text="${e.levelname}">Web Design</option>
+
+                    </select>
+                    <i
+                            class="icofont-simple-down absolute top-1/2 right-3 -translate-y-1/2 block text-lg z-10"
+                    ></i>
+                  </div>
+                </div>
+
+
+            </div>
+
+            <div class="mt-15px">
+              <button
+                      type="submit"
+                      class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
+              >
+                Create
+              </button>
+            </div>
+
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</section>
+</main>
+</header>
+
+<th:block th:replace="~{DashboardAdmin/footer :: footer}"></th:block>
+
+<th:block th:replace="~{DashboardAdmin/Css :: body}"></th:block>
+</body>
+</html>

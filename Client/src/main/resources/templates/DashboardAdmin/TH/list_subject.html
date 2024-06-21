@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:replace="~{DashboardAdmin/Css :: css-content}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{DashboardAdmin/header :: part-content}"></th:block>
+<div class="lg:col-start-4 lg:col-span-9">
+    <!-- review area -->
+    <div
+            class="p-10px md:px-10 md:py-50px mb-30px bg-whiteColor dark:bg-whiteColor-dark shadow-accordion dark:shadow-accordion-dark rounded-5"
+    >
+        <!-- heading -->
+        <div
+                class="mb-6 pb-5 border-b-2 border-borderColor dark:border-borderColor-dark"
+        >
+            <h2
+                    class="text-2xl font-bold text-blackColor dark:text-blackColor-dark"
+            >
+                Education Subject
+            </h2>
+        </div>
+        <!-- banner  -->
+        <div
+                class="mb-60px py-25px px-30px bg-lightGrey7 dark:bg-lightGrey7-dark grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 rounded-md"
+        >
+            <div class="xl:col-start-1 xl:col-span-8">
+                <h2
+                        class="text-xl font-bold text-blackColor dark:text-blackColor-dark mb-5px"
+                >
+                      <span class="leading-1.2">
+                   Your student's Subject
+                      </span>
+                </h2>
+                <p
+                        class="text-contentColor dark:text-contentColor-dark leading-1.8"
+                >
+                    Create Subject
+                </p>
+            </div>
+            <div class="xl:col-start-9 xl:col-span-4">
+                <div>
+                    <a
+                            th:href="@{/create_subject}"
+                            class="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px border border-primaryColor hover:text-primaryColor hover:bg-whiteColor rounded group text-nowrap"
+                    >
+                        Add New Subject
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- filter content -->
+
+        <div>
+            <div class="overflow-auto">
+                <table class="w-full text-left">
+                    <thead
+                            class="text-sm md:text-base text-blackColor dark:text-blackColor-dark bg-lightGrey5 dark:bg-whiteColor-dark leading-1.8 md:leading-1.8"
+                    >
+                    <tr>
+                        <th class="px-5px py-10px md:px-5">Class</th>
+                        <th class="px-5px py-10px md:px-5">Level </th>
+
+                        <th class="px-5px py-10px md:px-5"></th>
+                    </tr>
+                    </thead>
+                    <tbody
+                            class="text-size-13 md:text-base text-contentColor dark:text-contentColor-dark font-normal"
+                    >
+                    <tr class="leading-1.8 md:leading-1.8"  th:each="cl : ${subject}">
+                        <th
+                                class="px-5px py-10px md:px-5 font-normal text-wrap"
+                        >
+
+                            <p th:text="${cl.subjectname}"></p>
+                        </th>
+                        <th
+                                class="px-5px py-10px md:px-5 font-normal text-wrap"
+                        >
+
+                            <p th:text="${cl.classsid.classsname}"></p>
+
+                            <!--                            <span th:each="level : ${levels}" th:if="${level.levelid == cl.levelid}" th:text="${level.levelname}"></span>-->
+
+                            <!--                            <p th:text="${cl.getLevelid().levelname()}"></p>-->
+                        </th>
+
+                        <td class="px-5px py-10px md:px-5">
+                            <div class="flex">
+                                <a
+                                        class="flex items-center gap-1 md:text-sm font-bold text-blackColor dark:text-blackColor-dark hover:text-primaryColor dark:hover:text-primaryColor px-10px leading-1.8 relative before:w-0 before:h-0.5 before:absolute before:-bottom-0.5 lg:before:bottom-0 before:left-0 before:bg-primaryColor hover:before:w-full before:transition-all before:duration-300"
+                                        href="#"
+                                >
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="14"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="feather feather-edit"
+                                    >
+                                        <path
+                                                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                                        ></path>
+                                        <path
+                                                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                                        ></path>
+                                    </svg>
+                                    Edit</a
+                                >
+                                <a
+                                        class="flex items-center gap-1 md:text-sm font-bold text-blackColor dark:text-blackColor-dark hover:text-primaryColor dark:hover:text-primaryColor px-10px leading-1.8"
+                                        th:href="@{/Delete/{subjectid}(subjectid=${cl.subjectid})}" onclick="return confirm('Are you sure you want to delete this subject?')"
+                                >
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="14"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="feather feather-trash-2"
+                                    >
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                                        ></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                    Delete</a
+                                >
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr
+                            class="leading-1.8 md:leading-1.8 bg-lightGrey5 dark:bg-whiteColor-dark"
+                    >
+                        <th
+                                class="px-5px py-10px md:px-5 font-normal text-wrap"
+                        >
+                            <span
+                                    class="text-blackColor dark:text-blackColor-dark font-bold"
+                            >
+                              March 16, 2024</span
+                            >
+                            <p>10.00am</p>
+                        </th>
+                        <th
+                                class="px-5px py-10px md:px-5 font-normal text-wrap"
+                        >
+                            <span
+                                    class="text-blackColor dark:text-blackColor-dark font-bold"
+                            >
+                              Announcement Title</span
+                            >
+                            <p>Course: Fundamentals 101</p>
+                        </th>
+
+                        <td class="px-5px py-10px md:px-5">
+                            <div class="flex">
+                                <a
+                                        class="flex items-center gap-1 md:text-sm font-bold text-blackColor dark:text-blackColor-dark hover:text-primaryColor dark:hover:text-primaryColor px-10px leading-1.8 relative before:w-0 before:h-0.5 before:absolute before:-bottom-0.5 lg:before:bottom-0 before:left-0 before:bg-primaryColor hover:before:w-full before:transition-all before:duration-300"
+                                        href="#"
+                                >
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="14"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="feather feather-edit"
+                                    >
+                                        <path
+                                                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                                        ></path>
+                                        <path
+                                                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                                        ></path>
+                                    </svg>
+                                    Edit</a
+                                >
+                                <a
+                                        class="flex items-center gap-1 md:text-sm font-bold text-blackColor dark:text-blackColor-dark hover:text-primaryColor dark:hover:text-primaryColor px-10px leading-1.8"
+                                        href="#"
+                                >
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="14"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="feather feather-trash-2"
+                                    >
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path
+                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                                        ></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                    Delete</a
+                                >
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</header>
+
+<th:block th:replace="~{DashboardAdmin/footer :: footer}"></th:block>
+
+<th:block th:replace="~{DashboardAdmin/Css :: body}"></th:block>
+</body>
+</html>
